@@ -8,6 +8,7 @@ There are two main scripts in here:
 - MistrikovDV_final_PD.py - basik inverse dynamics
 
 Plots and videos are placed in log folder
+Report about final is in report folder in .md and in .pdf formats
 
 ## Dependencies
 - conda (i used conda forge)
