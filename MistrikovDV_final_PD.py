@@ -51,8 +51,6 @@ def controller(q: np.ndarray, dq: np.ndarray, t: float) -> np.ndarray:
     d_q_t = np.zeros(6, dtype=float)
     dd_q_t = np.zeros(6, dtype=float)
 
-    lambdas = np.array([400, 400, 400, 100, 100, 10], dtype=float)
-
     q_err = q_t - q
     error_history.append(q_err)
 
@@ -61,8 +59,8 @@ def controller(q: np.ndarray, dq: np.ndarray, t: float) -> np.ndarray:
     kp = 100
     kd = 20
 
-    u = kp * q_err + kd * d_q_err
-
+    v = kp * q_err + kd * d_q_err + dd_q_t
+    u = M_hat @ v + (C_hat + D_hat) @ dq + g_hat + F_c_hat
     u_history.append(u)
 
     return u
