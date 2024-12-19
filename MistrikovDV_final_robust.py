@@ -37,8 +37,6 @@ def get_worse_parameters(M, C, g, D, F_c):
     return M_hat, C_hat, g_hat, D_hat, F_c_hat
 	
 
-integral = 0
-
 def V_s(M_hat, S):
     k = 1000
     epsilon = np.array([200, 200, 100, 100, 10, 100])
@@ -49,8 +47,6 @@ def V_s(M_hat, S):
     S_norm = np.array(list([(eps * np.sign(S_norm[i]) if S_norm[i] <= eps else S_norm[i]) for i, eps in enumerate(epsilon)]))
 
     rho = (k / sigma_max) * np.linalg.pinv(M_hat) 
-
-    integral += S / np.mean(S_norm)
 
     v_s = rho @ (S / np.mean(S_norm))
     
@@ -111,7 +107,7 @@ def plot_results():
     plt.title('Joint Positions over Time')
     plt.legend()
     plt.grid(True)
-    plt.savefig('log/plots/joint_positions.png')
+    plt.savefig('log/plots/robust_joint_positions.png')
     plt.close()
     
     # Joint velocities plot
@@ -123,7 +119,7 @@ def plot_results():
     plt.title('Joint Velocities over Time')
     plt.legend()
     plt.grid(True)
-    plt.savefig('log/plots/joint_velocities.png')
+    plt.savefig('log/plots/robust_joint_velocities.png')
     plt.close()
 	
     # Error plot
@@ -135,7 +131,7 @@ def plot_results():
     plt.title('Joint Velocities over Time')
     plt.legend()
     plt.grid(True)
-    plt.savefig('log/plots/errors.png')
+    plt.savefig('log/plots/robust_errors.png')
     plt.close()
 	
     # Control plot
@@ -147,7 +143,7 @@ def plot_results():
     plt.title('Joint Velocities over Time')
     plt.legend()
     plt.grid(True)
-    plt.savefig('log/plots/control.png')
+    plt.savefig('log/plots/robust_control.png')
     plt.close()
 
 def main():
@@ -160,7 +156,7 @@ def main():
         enable_task_space=False,
         show_viewer=True,
         record_video=True,
-        video_path="log/videos/final.mp4",
+        video_path="log/videos/robust_final.mp4",
         fps=30,
         width=1920,
         height=1080
