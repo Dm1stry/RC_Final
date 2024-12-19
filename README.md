@@ -1,6 +1,13 @@
-# Homework on robot control for cource \[F24\] Fundamentals of Robot Control / Основы управления роботами
+# Final on robot control for cource \[F24\] Fundamentals of Robot Control / Основы управления роботами
 
 I have some problems with glfw on my system so i couldn't build plots properly, but in simulation all is fine. On your system plots must be drawn fine
+
+## Content
+There are two main scripts in here:
+- MistrikovDV_final_robust.py - robust control
+- MistrikovDV_final_PD.py - basik inverse dynamics
+
+Plots and videos are placed in log folder
 
 ## Dependencies
 - conda (i used conda forge)
